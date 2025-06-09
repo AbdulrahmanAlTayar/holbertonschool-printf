@@ -1,20 +1,25 @@
 #include "main.h"
 
 /**
- * print_int - Prints an integer
+ * print_int - Prints an integer (handles INT_MIN)
  * @args: List of arguments
  * Return: Number of characters printed
  */
 int print_int(va_list args)
 {
 	int n = va_arg(args, int);
-	int num = n, div = 1, count = 0;
+	unsigned int num;
+	int div = 1, count = 0;
 	char c;
 
 	if (n < 0)
 	{
 		count += write(1, "-", 1);
-		num = -num;
+		num = (unsigned int)(-n);
+	}
+	else
+	{
+		num = n;
 	}
 
 	while (num / div > 9)
