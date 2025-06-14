@@ -1,0 +1,47 @@
+.TH _printf 1 "June 2025" "" "Linux Programmer's Manual"
+.SH NAME
+.B _printf
+\- format and print data to stdout
+.SH SYNOPSIS
+.B #include "main.h"
+.br
+.B int _printf(const char *\fIformat\fR, ...);
+.SH DESCRIPTION
+.B _printf()
+produces output according to a \fIformat\fR string and a variable number of arguments. Output is written to \fIstdout\fR, the standard output stream.
+
+It mimics the standard
+.B printf
+function but is a custom implementation with limited specifier support.
+
+.SH FORMAT
+A \fIformat\fR string consists of ordinary characters, which are written unchanged, and conversion specifiers starting with a \fB%\fR. Each specifier may include optional flags, width, precision, and length modifiers.
+
+.SH SUPPORTED SPECIFIERS
+
+.TP
+.B %c
+Prints a single character.
+.TP
+.B %s
+Prints a null-terminated string.
+.TP
+.B %d, %i
+Prints a signed decimal integer.
+.TP
+.B %%
+Prints a literal percent sign.
+
+.SH RETURN VALUE
+Returns the number of characters printed (excluding the null terminator). Returns -1 if \fIformat\fR is NULL or if an incomplete specifier is encountered.
+
+.SH EXAMPLE
+.nf
+_printf("Hello, %s!\\n", "World");
+_printf("Value: %d\\n", 42);
+_printf("Percent sign: %%\\n");
+.fi
+
+.SH AUTHOR
+Abdulrahman Altayar, Abdullah Alsanie
+
